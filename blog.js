@@ -6,16 +6,10 @@ function addBlog(event) {
    let title = document.getElementById("blog-title").value;
    let content = document.getElementById("blog-content").value;
    let image = document.getElementById("image").files;
-   let startDate = document.getElementById("sdate").value;
-   let finishDate = document.getElementById("edate").value;
+   let startDate = new Date(document.getElementById("start-date").value);
+   let finishDate = new Date(document.getElementById("end-date").value);
 
-   const jsIcon = '<i class="fa-brands fa-square-js fa-xl fa-fw"></i>';
-   const goIcon = '<i class="fa-brands fa-golang fa-xl fa-fw"></i>';
-   const reactIcon = '<i class="fa-brands fa-react fa-xl fa-fw"></i>';
-
-   let jsIconDecide = document.getElementById("js-check").checked ? jsIcon : "";
-   let goIconDecide = document.getElementById("go-check").checked ? goIcon : "";
-   let reactIconDecide = document.getElementById("react-check").checked ? reactIcon : "";
+   
 
    image = URL.createObjectURL(image[0]);
    console.log(image);
@@ -26,9 +20,7 @@ function addBlog(event) {
     image,
     startDate,
     finishDate,
-    jsIconDecide,
-    goIconDecide,
-    reactIconDecide
+    
    };
 
    dataBlog.push(blog);
@@ -50,17 +42,17 @@ function renderBlog(){
                         <div class="blog-isi">
                             
                             <h4>
-                                <a href="blogdetail.html" target="_blank">${dataBlog[index0].title}</a>
+                                <a href="blogdetail.html" target="_blank">${dataBlog[index].title}</a>
                             </h4>
-                            <p class="durasi">${dataBlog[index].startDate} - ${dataBlog[index0].finishDate}</p>
+                            <p class="durasi">${dataBlog[index].startDate} - ${dataBlog[index].finishDate}</p>
                             
                             <p class="isicontent">
-                                ${dataBlog[index],content} 
+                                ${dataBlog[index].content} 
                             </p>
                             <div class="icons">
-                                ${dataBlog[index].jsIconDecide}
-                                ${dataBlog[index].goIconDecide}
-                                ${dataBlog[index].reactIconDecide}
+                            <i class="fa-brands fa-node-js" id="nodejs-icon"></i>
+                            <i class="fa-brands fa-react" id="reactjs-icon"></i>
+                            <i class="fa-brands fa-golang fa-xl fa-fw" id="go-icon"></i>
                             </div>
                                 
                             <div class="button-group">
